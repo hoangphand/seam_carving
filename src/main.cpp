@@ -51,44 +51,74 @@ int main( int argc, char** argv )
     test_image.at<Vec3b>(3, 1) = Vec3b(255, 255, 153);
     test_image.at<Vec3b>(3, 2) = Vec3b(255, 255, 255);
 
-    int** pixel_energy = calculate_pixel_energy(test_image);
+    cout<<"new_width: "<<new_width<<endl;
+    cout<<"new_height: "<<new_height<<endl;
 
-    cout<<"Pixel energy:"<<endl;
-    for (int i = 0; i < test_image.rows; i++) {
-        for (int j = 0; j < test_image.cols; j++) {
-            cout<<pixel_energy[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    
-    cout<<"Vertical seams:"<<endl;
-    int** vertical_seams = calculate_vertical_seams(pixel_energy, test_image.cols, test_image.rows);
-    for (int i = 0; i < test_image.rows; i++) {
-        for (int j = 0; j < test_image.cols; j++) {
-            cout<<vertical_seams[i][j]<<" ";
-        }
-        cout<<endl;
+    // for (int i = 0; i < test_image.rows; i++) {
+    //     for (int j = 0; j < test_image.cols; j++) {
+    //         cout<<test_image.at<Vec3b>(i, j)<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // if(!my_seam_carving_greedy(test_image, new_width, new_height, out_image)){
+    if(!my_seam_carving_greedy(in_image, new_width, new_height, out_image)){
+        return -1;
     }
 
-    cout<<"Lowest vertical seam:"<<endl;
-    int starting_vertical_point = get_lowest_energy_vertical_point(vertical_seams, test_image.cols, test_image.rows);
-    int* lowest_vertical_seam = find_lowest_energy_vertical_seam(pixel_energy, test_image.cols, test_image.rows, starting_vertical_point);
-    for (int i = 0; i < test_image.rows; i++) {
-        cout<<lowest_vertical_seam[i]<<" ";
-    }
-    cout<<endl;
+    // for (int i = 0; i < out_image.rows; i++) {
+    //     for (int j = 0; j < out_image.cols; j++) {
+    //         cout<<out_image.at<Vec3b>(i, j)<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // int** pixel_energy = calculate_pixel_energy(test_image);
+
+    // cout<<"Pixel energy:"<<endl;
+    // for (int i = 0; i < test_image.rows; i++) {
+    //     for (int j = 0; j < test_image.cols; j++) {
+    //         cout<<pixel_energy[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
     
-    cout<<"Horizontal seams:"<<endl;
-    int** horizontal_seams = calculate_horizontal_seams(pixel_energy, test_image.cols, test_image.rows);
-    for (int i = 0; i < test_image.rows; i++) {
-        for (int j = 0; j < test_image.cols; j++) {
-            cout<<horizontal_seams[i][j]<<" ";
-        }
-        cout<<endl;
-    }
+    // cout<<"Vertical seams:"<<endl;
+    // int** vertical_seams = calculate_vertical_seams(pixel_energy, test_image.cols, test_image.rows);
+    // for (int i = 0; i < test_image.rows; i++) {
+    //     for (int j = 0; j < test_image.cols; j++) {
+    //         cout<<vertical_seams[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // cout<<"Lowest vertical seam:"<<endl;
+    // int starting_vertical_point = get_lowest_energy_vertical_point(vertical_seams, test_image.cols, test_image.rows);
+    // int* lowest_vertical_seam = find_lowest_energy_vertical_seam(pixel_energy, test_image.cols, test_image.rows, starting_vertical_point);
+    // for (int i = 0; i < test_image.rows; i++) {
+    //     cout<<lowest_vertical_seam[i]<<" ";
+    // }
+    // cout<<endl;
+    
+    // cout<<"Horizontal seams:"<<endl;
+    // int** horizontal_seams = calculate_horizontal_seams(pixel_energy, test_image.cols, test_image.rows);
+    // for (int i = 0; i < test_image.rows; i++) {
+    //     for (int j = 0; j < test_image.cols; j++) {
+    //         cout<<horizontal_seams[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // cout<<"Lowest horizontal seam:"<<endl;
+    // int starting_horizontal_point = get_lowest_energy_horizontal_point(horizontal_seams, test_image.cols, test_image.rows);
+    // int* lowest_horizontal_seam = find_lowest_energy_horizontal_seam(pixel_energy, test_image.cols, test_image.rows, starting_horizontal_point);
+    // for (int i = 0; i < test_image.cols; i++) {
+    //     cout<<lowest_horizontal_seam[i]<<" ";
+    // }
+    // cout<<endl;
 
     // write it on disk
-    // imwrite( argv[4], out_image);
+    imwrite( argv[4], out_image);
     
     // also display them both
     
