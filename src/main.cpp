@@ -43,10 +43,10 @@ int main( int argc, char** argv )
     
     // also display them both
     
-    // namedWindow( "Original image", WINDOW_AUTOSIZE );
-    // namedWindow( "Seam Carved Image", WINDOW_AUTOSIZE );
-    // imshow( "Original image", in_image );
-    // imshow( "Seam Carved Image", out_image );
-    // waitKey(0);
+    namedWindow( "Original image", WINDOW_AUTOSIZE );
+    namedWindow( "Seam Carved Image", WINDOW_AUTOSIZE );
+    imshow( "Original image", in_image );
+    imshow( "Seam Carved Image", out_image );
+    waitKey(0);
     return 0;
 }
